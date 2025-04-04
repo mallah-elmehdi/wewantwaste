@@ -6,12 +6,12 @@ const Base = ({ children }) => {
     const { isLoading } = useSelector(state => state.loader)
 
     return (
-        <Box >
-            <Container>
-                <Stack>
-                    {isLoading ? "...loading" : children}
-                </Stack>
-            </Container>
+        <Box sx={{
+            backgroundColor: "grey.100",
+            minHeight: "100vh",
+            minWidth: "100vw"
+        }}>
+            {isLoading ? "...loading" : children}
         </Box>
     )
 }
