@@ -1,17 +1,14 @@
-import { Box, Container, Stack } from "@mui/material"
-import { useSelector } from 'react-redux'
-
+import { Box } from "@mui/material"
 
 const Base = ({ children }) => {
-    const { isLoading } = useSelector(state => state.loader)
 
     return (
         <Box sx={{
-            backgroundColor: "grey.100",
+            backgroundColor: "grey.A100",
             minHeight: "100vh",
-            minWidth: "100vw"
+            minWidth: "100vw",
         }}>
-            {isLoading ? "...loading" : children}
+            {children}
         </Box>
     )
 }

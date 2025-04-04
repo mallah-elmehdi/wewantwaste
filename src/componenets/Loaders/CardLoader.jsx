@@ -1,15 +1,11 @@
 import { Fade, Stack } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { Skeleton } from '.';
+import { Skeleton } from '../../componenets';
 
 const CardLoader = () => {
-    const { isLoading } = useSelector((store) => store.loader);
-
     return (
-        <Fade in={isLoading} {...{ timeout: 300 }}>
+        <Fade in={true} {...{ timeout: 300 }}>
             <Stack spacing={2}>
-                <Skeleton animation="wave" variant="rectangular" height={250} />
-                <Skeleton animation="wave" variant="circular" height={60} width={60} />
+                <Skeleton animation="wave" width="100%" variant="rectangular" height={300} />
             </Stack>
         </Fade>
     );

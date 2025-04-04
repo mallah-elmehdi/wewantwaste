@@ -1,14 +1,16 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { URLS } from "../constants/urls";
-import { loadingOFF, loadingON } from "../features/loader";
 import { api } from "./_axios";
 
-export const getSkipsByLocation = ({ postcode, area }) => async (dispatch) => {
-    try {
-        dispatch(loadingON());
-        return await api.post(`${URLS.SKIPS_BY_LOCATION}?postcode=${postcode}&area=${area}`);
-    } catch (error) {
-        throw error;
-    } finally {
-        dispatch(loadingOFF());
+export const getSkipsByLocation = createAsyncThunk('data/skips',
+    async ({ postcode, area }, { dispatch }) => {
+        try {
+            const response = await api.get(`${URLS.SKIPS_BY_LOCATION}?postcode=${postcode}&area=${area}`);
+            return response.data
+        } catch (error) {
+            throw error;
+        }
     }
-};
+);
+
+
