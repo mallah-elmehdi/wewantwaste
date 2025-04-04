@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react'
 import { getSkipsByLocation } from '../apis/skips'
 import { useDispatch } from 'react-redux'
+import Base from './Base'
 
 const App = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getSkipsByLocation())
+        dispatch(getSkipsByLocation({ postcode: "NR32", area: "Lowestoft" }))
     }, [])
 
     return (
-        <div>App</div>
+        <Base>
+            <div>App</div>
+        </Base>
     )
 }
 

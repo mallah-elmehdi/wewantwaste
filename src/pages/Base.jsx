@@ -1,7 +1,5 @@
 import { Box, Container, Stack } from "@mui/material"
-import { useEffect } from "react"
-import { useDispatch, useSelector } from 'react-redux'
-import { getSkipsByLocation } from "./apis/skips"
+import { useSelector } from 'react-redux'
 
 
 const Base = ({ children }) => {
