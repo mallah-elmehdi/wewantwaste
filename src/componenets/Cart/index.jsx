@@ -1,12 +1,12 @@
-import { Drawer, Fade, Grow, IconButton, Stack, Typography, Box, Badge, Divider, Button, Chip } from '@mui/material';
+import { FormControl, FormHelperText, FormLabel, Input } from '@mui/joy';
+import { Badge, Box, Button, Chip, Divider, Drawer, Grow, IconButton, Stack, Typography } from '@mui/material';
 import { blue, grey, yellow } from '@mui/material/colors';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { BsDash, BsPlus } from 'react-icons/bs';
 import { CiShoppingCart, CiWarning } from 'react-icons/ci';
 import { useDispatch, useSelector } from 'react-redux';
-import Img from '../Img';
 import { closeDrawer, openDrawer } from '../../features/drawer';
-import { BsDash, BsPlus } from 'react-icons/bs';
-import { FormControl, FormHelperText, FormLabel, Input } from '@mui/joy';
+import Img from '../Img';
 
 const Cart = () => {
     const dispatch = useDispatch()
