@@ -3,7 +3,7 @@ import { getSkipsByLocation } from '../apis/skips'
 import { useDispatch, useSelector } from 'react-redux'
 import Base from './Base'
 import { alpha, Avatar, Box, Chip, Container, Divider, Fade, Grid, Stack, Typography } from '@mui/material'
-import { CardLoader, SkipCard } from '../componenets'
+import { CardLoader, Cart, SkipCard } from '../componenets'
 import { grey, lightGreen } from '@mui/material/colors'
 import { FaDumpster } from 'react-icons/fa6'
 
@@ -50,21 +50,21 @@ const App = () => {
             <Container sx={{
                 py: 3,
             }}>
+                <Cart />
                 <Grid container spacing={3}>
                     {
                         isLoading ?
                             Array.from(Array(9)).map((_, index) => (
-                                <Grid size={{ md: 3, sm: 6, xs: 12 }}>
+                                <Grid size={{ md: 4, sm: 6, xs: 12 }}>
                                     <CardLoader />
                                 </Grid>
                             )) :
                             <>
                                 {Array.isArray(skips) && skips.map((skip, index) => (
-                                    <Grid key={skip.id} size={{ md: 3, sm: 6, xs: 12 }}>
+                                    <Grid key={skip.id} size={{ md: 4, sm: 6, xs: 12 }}>
                                         <Fade in={true}>
                                             <div>
-                                                <SkipCard backgroudImage={images[getRandomImageIndex()]}  {...skip} >
-                                                </SkipCard>
+                                                <SkipCard backgroudImage={images[getRandomImageIndex()]}  {...skip} />
                                             </div>
                                         </Fade>
                                     </Grid>
