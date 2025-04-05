@@ -1,28 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { getSkipsByLocation } from '../apis/skips'
+import { Container, Fade, Grid } from '@mui/material'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Base from './Base'
-import { alpha, Avatar, Box, Chip, Container, Divider, Fade, Grid, Stack, Typography } from '@mui/material'
+import { getSkipsByLocation } from '../apis/skips'
 import { CardLoader, Cart, SkipCard } from '../componenets'
-import { grey, lightGreen } from '@mui/material/colors'
-import { FaDumpster } from 'react-icons/fa6'
-
-
-
-// "created_at": "2025-04-03T13:51:46.897146",
-// "updated_at": "2025-04-03T13:51:46.897146",
-// "allowed_on_road": true,
-// "allows_heavy_waste": true
-
-// const SkipCard = ({ size, hire_period_days, price_before_vat, vat, transport_cost, per_tonne_cost }) => {
-//     return (
-//         <Fade in={true}>
-//             <div>
-//                 <StagedCard body={"adflijasd"} />
-//             </div>
-//         </Fade>
-//     )
-// }
+import Base from './Base'
 
 // these images are tests for the UI view
 const images = [
@@ -38,7 +19,6 @@ const App = () => {
     const getRandomImageIndex = () => {
         return Math.floor(Math.random() * 3);
     }
-
 
     useEffect(() => {
         dispatch(getSkipsByLocation({ postcode: "NR32", area: "Lowestoft" }))

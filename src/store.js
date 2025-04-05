@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import GlobalLoaderReducer from './features/GlobalLoader'
+import globalLoaderReducer from './features/globalLoader'
 import skipsReducer from './features/skips'
+import selectedSkipsReducer from './features/selectedSkips'
+import drawerReducer from './features/drawer'
 
 export default configureStore({
     reducer: {
-        GlobalLoader: GlobalLoaderReducer,
-        skips: skipsReducer
+        globalLoader: globalLoaderReducer,
+        skips: skipsReducer,
+        selectedSkips: selectedSkipsReducer,
+        drawer: drawerReducer
     }
 })

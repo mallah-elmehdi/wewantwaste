@@ -1,11 +1,49 @@
-import { alpha, Box, Chip, Stack, Typography, Button } from '@mui/material';
-import { grey, blue, yellow } from '@mui/material/colors';
-import { CiWarning } from 'react-icons/ci';
+import { alpha, Box, Button, Chip, Stack, Typography } from '@mui/material';
+import { blue, grey, yellow } from '@mui/material/colors';
+import { CiCircleCheck, CiWarning } from 'react-icons/ci';
+import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '..';
+import { selectSkip } from '../../features/selectedSkips';
 import PriceBreakDown from './PriceBreakDown';
+import { openDrawer } from '../../features/drawer';
 
 
-const SkipCard = ({ backgroudImage, size, hire_period_days, price_before_vat, vat, allowed_on_road }) => {
+const Action = (props) => {
+    const dispatch = useDispatch()
+    const { selectedSkips } = useSelector(state => state.selectedSkips)
+    const { id } = props
+
+    const handleSelect = () => {
+        dispatch(selectSkip(props))
+        dispatch(openDrawer())
+    }
+
+    return (
+        <Button
+            size='medium'
+            sx={{
+                mt: 2,
+                fontSize: 15,
+                fontWeight: 300,
+                textTransform: "capitalize",
+                borderRadius: 2,
+            }}
+            disableRipple
+            disableElevation
+            variant={selectedSkips[0]?.id === id ? 'contained' : 'outlined'}
+            onClick={handleSelect}
+            color='success'
+            startIcon={selectedSkips[0]?.id === id && <CiCircleCheck />}
+        >
+            Select
+        </Button>
+    )
+}
+
+
+const SkipCard = (props) => {
+    const { backgroudImage, size, hire_period_days, price_before_vat, vat, allowed_on_road } = props
+
     return (
         <Card>
             <Box position="relative">
@@ -89,21 +127,7 @@ const SkipCard = ({ backgroudImage, size, hire_period_days, price_before_vat, va
                             </Typography>
                         </Typography>
                     </Stack>
-                    <Button
-                        size='large'
-                        sx={{
-                            mt: 2,
-                            fontSize: 15,
-                            fontWeight: 300,
-                            textTransform: "capitalize",
-                            borderRadius: 2,
-                        }}
-                        disableRipple
-                        disableElevation
-                        variant='outlined'
-                    >
-                        Select
-                    </Button>
+                    <Action {...props} />
                 </Stack>
             </Box>
         </Card>

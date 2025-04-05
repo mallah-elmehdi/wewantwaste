@@ -3,14 +3,22 @@ import { getSkipsByLocation } from '../apis/skips';
 
 const initialState = {
     skips: [],
+    selectedSkips: [],
     isLoading: false
 };
 
 const skipsSlice = createSlice({
     name: 'skips',
     initialState,
-    extraReducers: (builder) => {
 
+    reducers: {
+        selectSkip: (state, { payload }) => {
+            const { id } = payload
+            state.selectedSkips = [id]
+        },
+    },
+
+    extraReducers: (builder) => {
         builder.addCase(getSkipsByLocation.pending, (state) => {
             state.isLoading = true;
         }).addCase(getSkipsByLocation.fulfilled, (state, { payload }) => {
@@ -21,5 +29,7 @@ const skipsSlice = createSlice({
         });
     },
 });
+
+export const { selectSkip } = skipsSlice.actions;
 
 export default skipsSlice.reducer;

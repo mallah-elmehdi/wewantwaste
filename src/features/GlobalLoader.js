@@ -4,8 +4,8 @@ const initialState = {
     isGlobalLoading: false
 }
 
-export const GlobalLoaderSlice = createSlice({
-    name: 'GlobalLoader',
+export const globalLoaderSlice = createSlice({
+    name: 'globalLoader',
     initialState,
     reducers: {
         loadingGlobalON: state => {
@@ -17,5 +17,5 @@ export const GlobalLoaderSlice = createSlice({
     }
 })
 
-export const { loadingGlobalON, loadingGlobalOFF } = GlobalLoaderSlice.actions
-export default GlobalLoaderSlice.reducer
+export const { loadingGlobalON, loadingGlobalOFF } = globalLoaderSlice.actions
+export default globalLoaderSlice.reducer
